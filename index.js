@@ -94,11 +94,11 @@ myDriver.prototype.config = function(rpc,cb) {
 		  "contents": [
 	  			{ "type": "paragraph", "text": "Please enter your local IP"}
 				, { "type": "input_field_text", "field_name": "ip_key", "value": "", "label": "IP key", "placeholder": "IP key", "required": true}
-				, {"type": "submit", "name": "Add", "rpc_method": "addIP"}
+				, {"type": "submit", "name": "Add", "rpc_method": "addIPKeys"}
 			]
 	  });
 	  break;
-	case 'addIP':
+	case 'addIPKeys':
 		self.addKeys(rpc.params.ip_key);
 		cb(null, {
   		  "contents": [
