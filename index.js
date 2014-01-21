@@ -74,7 +74,7 @@ myDriver.prototype.config = function(rpc,cb) {
 	return cb(null, {"contents":[
 	{
 		"type": "submit"
-		, "name": "Add local IP"
+		, "name": "Add local IP - v 0.0.2"
 		, "rpc_method": "addLocalIP"
 	}
 	]});
@@ -111,7 +111,7 @@ myDriver.prototype.config = function(rpc,cb) {
   }
 };
 
-myDriver.prototype.addIP = function(ip_key){
+myDriver.prototype.addKeys = function(ip_key){
 	this._opts.ip_key = ip_key;
 	this.emit('register', new Device(ip_key));
 }
