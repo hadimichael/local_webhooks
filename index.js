@@ -99,14 +99,16 @@ myDriver.prototype.config = function(rpc,cb) {
 	  });
 	  break;
 	case 'addIPKeys':
+		console.log("IP key: " + rpc.params.ip_key);
 		self.addKeys(rpc.params.ip_key);
 		cb(null, {
   		  "contents": [
   	  			{ "type": "paragraph", "text": "Your local IP has been saved."}
-  				, {"type": "close", "text": "Cloe"}
+  				, {"type": "close", "text": "Close"}
   			]
 		});
 	default:
+		console.log("--- Error ----");
 		console.log('Error unknown rpc method');
   }
 };
