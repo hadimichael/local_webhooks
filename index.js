@@ -107,6 +107,7 @@ myDriver.prototype.config = function(rpc,cb) {
   				, {"type": "close", "text": "Close"}
   			]
 		});
+		break;
 	default:
 		console.log("--- Error ----");
 		console.log('Error unknown rpc method');
