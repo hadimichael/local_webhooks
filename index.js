@@ -117,7 +117,9 @@ myDriver.prototype.addKeys = function(ip_key){
 	console.log("function addKeys: " + ip_key);
 	this._opts.ip_key = ip_key;
 	this.save();
+	console.log("config saved");
 	this.emit('register', new Device(ip_key));
+	console.log("New Device registered.");
 }
 
 
