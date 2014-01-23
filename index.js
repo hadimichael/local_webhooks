@@ -75,7 +75,7 @@ myDriver.prototype.config = function(rpc,cb) {
 	{
 		"type": "submit"
 		, "name": "Add local IP - v 0.0.2"
-		, "rpc_method": "addLocalIP"
+		, "rpc_method": "addIP"
 	}
 	]});
   }
@@ -89,7 +89,7 @@ myDriver.prototype.config = function(rpc,cb) {
   */
   
   switch(rpc.method) {
-  	case 'addLocalIP':
+  	case 'addIP':
 	  cb(null, {
 		  "contents": [
 	  			{ "type": "paragraph", "text": "Please enter your local IP"}
@@ -103,7 +103,7 @@ myDriver.prototype.config = function(rpc,cb) {
 		cb(null, {
   		  "contents": [
   	  			{ "type": "paragraph", "text": "Your local IP has been saved."}
-  				, {"type": "close", "text": "Cloe", "rpc_method": "addIP"}
+  				, {"type": "close", "text": "Cloe"}
   			]
 		});
 	default:
