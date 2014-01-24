@@ -34,6 +34,10 @@ function myDriver(opts,app) {
   
   self._app = app;
   self._opts = opts;
+  
+  self._opts.localwebhooks = opts.localwebhooks;
+  
+  self._localwebhooks = {};
 
   app.on('client::up',function(){
 
@@ -73,9 +77,8 @@ myDriver.prototype.config = function(rpc,cb) {
     //return configHandlers.menu.call(this,cb);
 	return cb(null, {"contents":[
 	{
-		"type": "submit"
-		, "name": "Add local IP - v 0.0.2"
-		, "rpc_method": "addIP"
+		"type": "submit" , "name": "Add local Webhook - v 0.1"
+		, "rpc_method": "addNew"
 	}
 	]});
   }
@@ -89,24 +92,34 @@ myDriver.prototype.config = function(rpc,cb) {
   */
   
   switch(rpc.method) {
-  	case 'addIP':
+  	case 'addNew':
 	  cb(null, {
 		  "contents": [
-	  			{ "type": "paragraph", "text": "Please enter your local IP"}
+	  			{ "type": "paragraph", "text": "Please enter ta unique Identifier for your local Webhook (no whitespace, etc.) and your local URL"}
+				, { "ype": "input_field_text", "field_name": "name_key", "value": "", "label": "Name key", "placeholder": "Name fpr local Webhook", "required": true}
 				, { "type": "input_field_text", "field_name": "ip_key", "value": "", "label": "IP key", "placeholder": "IP key", "required": true}
-				, {"type": "submit", "name": "Add", "rpc_method": "addIPKeys"}
+				, { "type": "submit", "name": "Add local Webhook", "rpc_method": "add"}
 			]
 	  });
 	  break;
-	case 'addIPKeys':
+	case 'add':
 		console.log("IP key: " + rpc.params.ip_key);
-		self.addKeys(rpc.params.ip_key);
-		cb(null, {
-  		  "contents": [
-  	  			{ "type": "paragraph", "text": "Your local IP has been saved."}
-  				, {"type": "close", "text": "Close"}
-  			]
-		});
+		console.log("Name key: " + rpc.params.name_key);
+		if(self.addLocalWebhook(rpc.params.name_key, rpc.params.ip_key){
+			cb(null, {
+	  		  "contents": [
+	  	  			{ "type": "paragraph", "text": "Your local IP has been saved."}
+	  				, {"type": "close", "text": "Close"}
+	  			]
+			});
+		} else {
+			cb(null, {
+	  		  "contents": [
+	  	  			{ "type": "paragraph", "text": "Return to Add New."}
+	  				, { "type": "submit", "name": "Add local Webhook", "rpc_method": "addNew"}
+	  			]
+			});
+		}		
 		break;
 	default:
 		console.log("--- Error ----");
@@ -114,13 +127,37 @@ myDriver.prototype.config = function(rpc,cb) {
   }
 };
 
-myDriver.prototype.addKeys = function(ip_key){
-	console.log("function addKeys: " + ip_key);
-	this._opts.ip_key = ip_key;
-	this.save();
-	console.log("config saved");
-	this.emit('register', new Device(ip_key));
+myDriver.prototype.addLocalWebhook = function(name_key, ip_key){
+	console.log("function addLocalWebhook");
+	console.log("name_key:" + name_key);
+	console.log("ip_key"": " + ip_key);
+	
+	consloe.log("Check if local webhook exist...");
+	for(var id in self._opts.localWebhookOptions){
+		if(id.name == name_key){
+			console.log(id.name + " == " + name_key);
+			return false;
+		} else {
+			console.log(id.name + " != " + name_key);
+		}
+	}
+	
+	var localWebhookOptions = {
+		"name": name_key
+		, "ip": ip_key
+	};
+	
+	self._opts.localwebhooks[name_key] = localWebhooksOptions;
+	self.save();
+	
+	var localWebhookDevice = new Device(localWebhookOptions, self);
+	
+	//this._opts.ip_key = ip_key;
+	//this.save();
+	console.log("Register new device ...");
+	this.emit('register', new Device(name_key, ip_key));
 	console.log("New Device registered.");
+	return true;
 }
 
 

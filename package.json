@@ -1,6 +1,6 @@
 {
   "name": "local_webhooks",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Ninja driver for local webhooks (webhooks in LAN)",
   "main": "index.js",
   "scripts": {
