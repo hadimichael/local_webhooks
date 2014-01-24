@@ -52,7 +52,7 @@ function myDriver(opts,app) {
     }
 
     // Register a device
-    self.emit('register', new Device(self._opts.ip_key));
+    //self.emit('register', new Device(self._opts.ip_key));
   	console.log(self._opts);
   });
 };
