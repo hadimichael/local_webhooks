@@ -1,6 +1,6 @@
 {
   "name": "local_webhooks",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ninja driver for local webhooks (webhooks in LAN)",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,6 @@
     "request",
     "lan"
   ],
-  "author": "Mats Becker",
+  "author": "Mats Becker, @hadi_michael",
   "license": "BSD-2-Clause"
 }
