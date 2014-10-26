@@ -94,8 +94,8 @@ myDriver.prototype.config = function(rpc,cb) {
 	case 'addNew':
 	  cb(null, {
 		  "contents": [
-				{ "type": "paragraph", "text": "Please enter ta unique Identifier for your local Webhook (no whitespace, etc.) and your local URL"},
-				{ "ype": "input_field_text", "field_name": "name_key", "value": "", "label": "Name key", "placeholder": "Name fpr local Webhook", "required": true},
+				{ "type": "paragraph", "text": "Please enter a unique Identifier for your local Webhook (no whitespace, etc.) and your local URL"},
+				{ "type": "input_field_text", "field_name": "name_key", "value": "", "label": "Name key", "placeholder": "Name fpr local Webhook", "required": true},
 				{ "type": "input_field_text", "field_name": "ip_key", "value": "", "label": "IP key", "placeholder": "IP key", "required": true},
 				{ "type": "submit", "name": "Add local Webhook", "rpc_method": "add"}
 			]
