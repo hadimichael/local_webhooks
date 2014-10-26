@@ -1,6 +1,6 @@
 {
   "name": "ninja-localwebhook",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Ninja driver for local webhooks (webhooks in LAN)",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "request",
     "lan"
   ],
-  "author": "Mats Becker, @hadi_michael",
+  "author": "@hadi_michael, Mats Becker",
   "license": "MIT",
   "dependencies": {
     "httpreq": "^0.4.2"

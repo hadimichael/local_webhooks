@@ -36,8 +36,6 @@ function localWebHookDriver(opts, app) {
 	self._opts = opts;
 	self._opts.localWebhooks = opts.localWebhooks || [];
 
-	// self._localWebhooks = {};
-
 	app.on('client::up',function(){
 		// The client is now connected to the Ninja Platform
 
@@ -117,8 +115,6 @@ localWebHookDriver.prototype.addLocalWebhook = function(name_key, ip_key) {
 	var self = this;
 
 	console.log('Check if local webhook exist...');
-
-	// self._opts.localWebhooks = self.opts.localwebhooks || [];
 
 	for (var id in self._opts.localWebhooks){
 		if (id === name_key){
