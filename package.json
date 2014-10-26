@@ -15,5 +15,8 @@
     "lan"
   ],
   "author": "Mats Becker, @hadi_michael",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "httpreq": "^0.4.2"
+  }
 }

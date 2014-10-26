@@ -9,7 +9,7 @@ util.inherits(localWebHookDriver,stream);
 // Our greeting to the user.
 var HELLO_NINJA_ANNOUNCEMENT = {
 	'contents': [
-		{ 'type': 'heading', 'text': 'Local Webhhoks' },
+		{ 'type': 'heading', 'text': 'Local Webhooks' },
 		{ 'type': 'paragraph', 'text': 'Webhooks for LAN.' }
 	]
 };
@@ -34,9 +34,9 @@ function localWebHookDriver(opts, app) {
 
 	self._app = app;
 	self._opts = opts;
-	self._opts.localwebhooks = opts.localwebhooks || [];
+	self._opts.localWebhooks = opts.localWebhooks || [];
 
-	self._localwebhooks = {};
+	// self._localWebhooks = {};
 
 	app.on('client::up',function(){
 		// The client is now connected to the Ninja Platform
@@ -48,7 +48,7 @@ function localWebHookDriver(opts, app) {
 			self.save();
 		}
 
-		console.log('Clien is connected to Ninja Platform', self.opts);
+		console.log('Client is connected to Ninja Platform', self.opts);
 	});
 }
 
@@ -117,6 +117,8 @@ localWebHookDriver.prototype.addLocalWebhook = function(name_key, ip_key) {
 	var self = this;
 
 	console.log('Check if local webhook exist...');
+
+	// self._opts.localWebhooks = self.opts.localwebhooks || [];
 
 	for (var id in self._opts.localWebhooks){
 		if (id === name_key){
